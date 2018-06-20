@@ -1,17 +1,18 @@
 import React from "react";
-
-const { Provider, Consumer } = React.cecreateContext();
+import axios from 'axios'
+const { Provider, Consumer } = React.createContext();
 
 class UserProvider extends React.Component {
   login = async (username, password) => {
     try {
-      const res = await axios.get("https://hurricane-pansy.glitch.me/users/login",
+      const res = await axios.post("https://hurricane-pansy.glitch.me/users/login",
         {
           username: username,
           password: password
         }
       );
       localStorage.setItem('token', res.data.token)
+      console.log('로그인됨')
     } catch (e) {
       alert(e.message);
     }
@@ -19,7 +20,7 @@ class UserProvider extends React.Component {
 
   render() {
     const value = {
-      login: this.login
+      onLogin: this.login
     }
     return <Provider value={value}>{this.props.children}</Provider>;
   }

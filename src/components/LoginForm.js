@@ -16,11 +16,12 @@ export default class LoginForm extends React.Component{
     })
   }
   render() {
+    const {onLogin} = this.props
     return (
       <div>
         <input type="text" value={this.state.value} onChange={this.inputUsername}/>
         <input type="password" value={this.state.value} onChange={this.inputPassword}/>
-        <button >로그인</button>
+        <button onClick={e => this.props.onLogin(this.state.username, this.state.password)}>로그인</button>
       </div>
     )
   }
