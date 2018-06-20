@@ -1,20 +1,22 @@
 import React from "react";
+import todoAPI from '../todoAPI'
 import axios from 'axios'
 const { Provider, Consumer } = React.createContext();
-
 class UserProvider extends React.Component {
   login = async (username, password) => {
     try {
-      const res = await axios.post("https://hurricane-pansy.glitch.me/users/login",
+      const res = await todoAPI.post("/users/login",
         {
           username: username,
           password: password
         }
       );
       localStorage.setItem('token', res.data.token)
+      
       console.log('로그인됨')
     } catch (e) {
-      alert(e.message);
+      console.log(e.status)
+      alert('아이디와 비밀번호를 확인해주세요');
     }
   };
 

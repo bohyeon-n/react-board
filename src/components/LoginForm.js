@@ -1,27 +1,31 @@
 import React from 'react'
 
 export default class LoginForm extends React.Component{
+  
   state = {
-    username: null,
-    password: null
+    username: '',
+    password: ''
   }
-  inputUsername = (e) => {
+  handleInputUsername = (e) => {
     this.setState({
       username: e.target.value
     })
   }
-  inputPassword = (e) => {
+  handleInputPassword = (e) => {
     this.setState({
       password: e.target.value 
     })
   }
   render() {
     const {onLogin} = this.props
+    const {username, password} = this.state
+  
     return (
       <div>
-        <input type="text" value={this.state.value} onChange={this.inputUsername}/>
-        <input type="password" value={this.state.value} onChange={this.inputPassword}/>
-        <button onClick={e => this.props.onLogin(this.state.username, this.state.password)}>로그인</button>
+        <h1>로그인</h1>
+        <input type="text" value={username} onChange={this.handleInputUsername} />
+        <input type="password" value={password} onChange={this.handleInputPassword}/>
+        <button onClick={e => onLogin(username, password)}>로그인</button>
       </div>
     )
   }
