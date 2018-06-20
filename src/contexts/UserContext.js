@@ -1,11 +1,12 @@
 import React from "react";
-import todoAPI from '../todoAPI'
+import boardAPI from '../boardAPI'
 import axios from 'axios'
 const { Provider, Consumer } = React.createContext();
 class UserProvider extends React.Component {
   login = async (username, password) => {
+    console.log(username, password)
     try {
-      const res = await todoAPI.post("/users/login",
+      const res = await boardAPI.post("/users/login",
         {
           username: username,
           password: password
@@ -15,8 +16,10 @@ class UserProvider extends React.Component {
       
       console.log('로그인됨')
     } catch (e) {
-      console.log(e.status)
-      alert('아이디와 비밀번호를 확인해주세요');
+      if(e.response && e.response.status === 400) {
+
+        alert('아이디와 비밀번호를 확인해주세요');
+      } 
     }
   };
 
