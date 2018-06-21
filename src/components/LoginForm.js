@@ -22,7 +22,6 @@ export default class LoginForm extends React.Component{
   
     return (
       <div>
-        <h1>로그인</h1>
         <input type="text" value={username} onChange={this.handleInputUsername} />
         <input type="password" value={password} onChange={this.handleInputPassword}/>
         <button onClick={e => onLogin(username, password)}>로그인</button>
