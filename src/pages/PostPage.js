@@ -1,13 +1,9 @@
 import React from 'react'
-import { PostProvider } from '../contexts/PostContext';
-import PostListContainer from '../containers/PostListContainer'
+import PostContainer from '../containers/PostContainer'
 export default class PostPage extends React.Component {
   render() {
     return (
-      <PostProvider>
-        <PostListContainer/>
-
-      </PostProvider>
+      <PostContainer/>
     )
   }
 }

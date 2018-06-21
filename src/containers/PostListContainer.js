@@ -1,14 +1,14 @@
 import React from "react";
 import PostListItem from '../components/PostListItem'
-import { PostConsumer } from "../contexts/PostContext";
+import { PostListConsumer } from "../contexts/PostListContext";
 export default class PostListContainer extends React.Component {
   render() {
     return (
-      <PostConsumer>
+      <PostListConsumer>
         {({ posts }) => 
         posts.map(post => <PostListItem title={post.title} username={post.user.username} />
         )}
-      </PostConsumer>
+      </PostListConsumer>
     );
   }
 }
