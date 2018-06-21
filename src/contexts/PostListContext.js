@@ -6,7 +6,8 @@ class PostListProvider extends React.Component {
   state = {
     posts: [
 
-    ]
+    ],
+    loading: true
   }
   componentDidMount () {
     this.fetchTodos()
@@ -15,12 +16,14 @@ class PostListProvider extends React.Component {
     const res = await boardAPI.get('/posts?_expand=user')
     console.log(res.data)
     this.setState({
-      posts: res.data
+      posts: res.data,
+      loading: false
     })
   }
   render() {
     const value = {
-      posts: this.state.posts
+      posts: this.state.posts,
+      loading: this.state.loading
     }
     return <Provider value={value}>{this.props.children}</Provider>
     

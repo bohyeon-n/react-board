@@ -16,10 +16,14 @@ const {Provider, Consumer}  = React.createContext()
      try {
        const {id} = this.props
        const res = await boardAPI.get(`/posts/${id}?_expand=user`)
+       const userRes = await boardAPI.get('/me')
        this.setState({
          title: res.data.title,
          body: res.data.body,
-         author: res.data.user.username
+         author: res.data.user.username,
+         userId: res.data.userId,
+         me: userRes.data.id
+
        })
      } finally {
        this.setState({
@@ -27,12 +31,20 @@ const {Provider, Consumer}  = React.createContext()
        })
      }
    }
+
+   deletePost = async () => {
+    
+     await boardAPI.delete(`/posts/${this.props.id}`)
+   }
   render() {
     const value = {
       loading: this.state.loading,
       title: this.state.title,
       body: this.state.body,
-      author: this.state.author
+      author: this.state.author,
+      userId: this.state.userId,
+      me: this.state.me,
+      onDelete: this.deletePost
     }
     return (
       <Provider value={value}>{this.props.children}</Provider>
