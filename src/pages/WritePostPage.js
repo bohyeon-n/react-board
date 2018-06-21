@@ -1,9 +1,17 @@
 import React from 'react'
 import WritePostContainer from '../containers/WritePostContainer'
-export default class WritePostPage extends React.Component {
+import { WritePostProvider } from '../contexts/WritePostContext';
+import withAuth from '../hocs/withAuth';
+class WritePostPage extends React.Component {
   render() {
     return (
-      <WritePostContainer/>
+      <WritePostProvider>
+
+        <WritePostContainer/>
+
+      </WritePostProvider>
     )
   }
 }
+
+export default withAuth('/login')(WritePostPage)

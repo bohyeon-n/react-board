@@ -16,16 +16,18 @@ export default class WritePostForm extends React.Component {
     })
   }
   render() {
+    const {writePost} = this.props
+    const{title, body} = this.state
     return (
       <React.Fragment>
         <label for="title">title
-        <input type="text" value={this.state.title} onChange={this.handleInputTitle} />
+        <input type="text" value={title} onChange={this.handleInputTitle} />
         </label>
         <label for="body">내용
-        <textarea value={this.state.body} onChange={this.handleInputBody}></textarea>
+        <textarea value={body} onChange={this.handleInputBody}></textarea>
         </label>
-        <button>글 작성하기</button>
+        <button onClick={e => writePost(title, body)}>글 작성하기</button>
       </React.Fragment>
     )
   }
-}
+} 

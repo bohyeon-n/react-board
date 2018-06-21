@@ -5,9 +5,12 @@ export default class PostListContainer extends React.Component {
   render() {
     return (
       <PostListConsumer>
-        {({ posts }) => 
-        posts.map(post => <PostListItem title={post.title} username={post.user.username} id={post.id}/>
-        )}
+          
+        {({ posts }) => (
+        posts.map(post => <PostListItem title={post.title} username={post.user.username} id={post.id}/>)
+
+      )}
+ 
       </PostListConsumer>
     );
   }

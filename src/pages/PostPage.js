@@ -8,7 +8,6 @@ export default class PostPage extends React.Component {
     return (
       <PostProvider id={this.props.match.params.id}>
         <PostContainer/>
-
       </PostProvider>
     )
   }
