@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { CommentConsumer } from "../contexts/CommnetContext";
+import CommentItem from '../components/CommentItem'
 
-export class CommentListContainer extends React.Component {
+export default class CommentListContainer extends React.Component {
   render() {
-    return (
-      comments.map(comment => {
-        <CommentItem />
-      })
+    if (localStorage.getItem("token")) {
+      return (
+        <CommentConsumer>
+          {({comments}) => (
+            comments.map(comment => <CommentItem body={comment.body} username={comment.user.username}/>
+            )
+
+          )}
+        </CommentConsumer>
     )
+    }
   }
 }

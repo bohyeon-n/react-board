@@ -16,7 +16,6 @@ export default class PostContainer extends React.Component {
               <Title title="post" />
               <Post title={title} body={body} author={author} />
               {me === userId ? <DeleteButtonContainer /> : null}
-              <CommentListContainer/>
             </div>
           )
         }

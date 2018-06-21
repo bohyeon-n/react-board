@@ -31,7 +31,7 @@ const {Provider, Consumer}  = React.createContext()
        })
      }
    }
-
+   
    deletePost = async () => {
     
      await boardAPI.delete(`/posts/${this.props.id}`)
