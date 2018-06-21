@@ -1,7 +1,7 @@
 import React from 'react'
 import boardAPI from '../boardAPI'
 
-const {Provider, Consumer}  = React.CreateContext()
+const {Provider, Consumer}  = React.createContext()
  class PostProvider extends React.Component {
    state = {
      loading: false,

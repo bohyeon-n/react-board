@@ -1,11 +1,11 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 export default class PostListItem extends React.Component {
   render() {
-    const {title, username} = this.props
+    const {title, username,id} = this.props
     return (
       <div>
-        <div>{title}</div>
+        <Link to={`/posts/${id}`}>{title}</Link>
         <div>{username}</div>
       </div>
     )

@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import PostListPage from "./pages/PostListPage";
+import PostPage from './pages/PostPage'
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 class App extends Component {

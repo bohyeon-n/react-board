@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export default class Post extends React.Componenet {
+export default class Post extends React.Component {
   render() {
+    const { title, body, author } = this.props;
     return (
       <React.Fragment>
-        <div>작성자</div>
-        <div>title</div>
-        <div>body</div>
-
-
+        <div>{author}</div>
+        <div>{title}</div>
+        <div>{body}</div>
       </React.Fragment>
-    )
+    );
   }
 }
