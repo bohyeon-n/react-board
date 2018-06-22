@@ -1,20 +1,19 @@
-import React from "react";
-import LoginFormContainer from "../containers/LoginFormContainer";
-import { UserProvider } from "../contexts/UserContext";
-import Title from '../components/Title'
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import LoginFormContainer from '../containers/LoginFormContainer';
+import { UserProvider } from '../contexts/UserContext';
+import Title from '../components/Title';
+import { Redirect } from 'react-router-dom';
 export default class LoginPage extends React.Component {
   render() {
-    if(localStorage.getItem('token')) {
-      return <Redirect to='/'/>
+    if (localStorage.getItem('token')) {
+      return <Redirect to="/" />;
     } else {
       return (
         <UserProvider>
-          <Title title='로그인 페이지'/>
+          <Title title="로그인 페이지" />
           <LoginFormContainer />
         </UserProvider>
       );
-
     }
   }
 }

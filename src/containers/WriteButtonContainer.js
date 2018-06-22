@@ -1,13 +1,13 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 export default class WriteButtonContainer extends React.Component {
   state = {
-    redirect: false
+    redirect: false,
   };
   setRedirect = e => {
     this.setState({
-      redirect: true
-    })
+      redirect: true,
+    });
   };
 
   render() {

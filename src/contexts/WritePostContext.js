@@ -1,17 +1,17 @@
-import React from "react";
-import boardAPI from "../boardAPI";
-import Redirect from "react-router-dom/Redirect";
+import React from 'react';
+import boardAPI from '../boardAPI';
+import Redirect from 'react-router-dom/Redirect';
 
 const { Provider, Consumer } = React.createContext();
 
 class WritePostProvider extends React.Component {
   writePost = async (title, body) => {
     try {
-      const userRes = await boardAPI.get("/me");
-      const res = await boardAPI.post("/posts", {
+      const userRes = await boardAPI.get('/me');
+      const res = await boardAPI.post('/posts', {
         title: title,
         body: body,
-        userId: userRes.data.id
+        userId: userRes.data.id,
       });
     } catch (e) {
       alert(e.message);
@@ -22,7 +22,7 @@ class WritePostProvider extends React.Component {
 
   render() {
     const value = {
-      writePost: this.writePost
+      writePost: this.writePost,
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

@@ -1,10 +1,10 @@
-import React from "react";
-import WritePostForm from "../components/WritePostForm";
-import { WritePostConsumer } from "../contexts/WritePostContext";
-import { Redirect } from "react-router-dom";
+import React from 'react';
+import WritePostForm from '../components/WritePostForm';
+import { WritePostConsumer } from '../contexts/WritePostContext';
+import { Redirect } from 'react-router-dom';
 export default class WritePostContainer extends React.Component {
   state = {
-    redirect: false
+    redirect: false,
   };
   render() {
     if (this.state.redirect) {
@@ -17,8 +17,8 @@ export default class WritePostContainer extends React.Component {
               writePost={async (title, body) => {
                 await writePost(title, body);
                 this.setState({
-                  redirect: true
-                })
+                  redirect: true,
+                });
               }}
             />
           )}

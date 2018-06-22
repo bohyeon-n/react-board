@@ -1,9 +1,9 @@
-import React from "react";
-import { PostConsumer } from "../contexts/PostContext";
-import Post from "../components/Post";
-import DeleteButtonContainer from "../containers/DeleteButtonContainer";
-import Title from "../components/Title";
-import CommentListContainer from '../containers/CommentListContainer'
+import React from 'react';
+import { PostConsumer } from '../contexts/PostContext';
+import Post from '../components/Post';
+import DeleteButtonContainer from '../containers/DeleteButtonContainer';
+import Title from '../components/Title';
+import CommentListContainer from '../containers/CommentListContainer';
 export default class PostContainer extends React.Component {
   render() {
     return (
@@ -15,7 +15,9 @@ export default class PostContainer extends React.Component {
             <div>
               <Title title="post" />
               <Post title={title} body={body} author={author} />
-              {me === userId ? <DeleteButtonContainer /> : null}
+              {localStorage.getItem('token') && me === userId ? (
+                <DeleteButtonContainer />
+              ) : null}
             </div>
           )
         }
