@@ -1,38 +1,46 @@
 import React from 'react';
-
+import Helmet from 'react-helmet';
 export default class LoginForm extends React.Component {
-  state = {
-    username: '',
-    password: '',
-  };
-  handleInputUsername = e => {
-    this.setState({
-      username: e.target.value,
-    });
-  };
-  handleInputPassword = e => {
-    this.setState({
-      password: e.target.value,
-    });
+  static defualtProps = {
+    username: '', // 아이디 입력 필드에 표시 될 값
+    password: '', // 비밀번호 입력 필드에 표시될 값
+    onUsernameChange: username => {}, // 아이디 입력 필드에 새로운 입력이 일어날 때 호출되는 함수
+    onPasswordChange: password => {}, // 비밀번호 입력 필드에 새로운 입력이 일어날 때 호출되는 함수
   };
   render() {
-    const { onLogin } = this.props;
-    const { username, password } = this.state;
-
+    const {
+      username,
+      password,
+      onUsernameChange,
+      onPasswordChange,
+      login,
+    } = this.props;
     return (
-      <div>
+      <React.Fragment>
+        <h1>Login</h1>
+        <Helmet
+          title="Login"
+          meta={[
+            {
+              property: 'og:title',
+              content: 'login',
+            },
+          ]}
+        />
+        <label for="username">Username</label>
         <input
           type="text"
           value={username}
-          onChange={this.handleInputUsername}
+          onChange={e => onUsernameChange(e.target.value)}
         />
+        <label for="password">password</label>
         <input
           type="password"
           value={password}
-          onChange={this.handleInputPassword}
+          onChange={e => onPasswordChange(e.target.value)}
         />
-        <button onClick={e => onLogin(username, password)}>로그인</button>
-      </div>
+        <button onClick={e => login(username, password)}>로그인</button>
+      </React.Fragment>
     );
   }
 }

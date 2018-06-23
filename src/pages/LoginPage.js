@@ -10,7 +10,6 @@ export default class LoginPage extends React.Component {
     } else {
       return (
         <UserProvider>
-          <Title title="로그인 페이지" />
           <LoginFormContainer />
         </UserProvider>
       );

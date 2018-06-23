@@ -6,25 +6,42 @@ import { Redirect } from 'react-router-dom';
 export default class LoginContainer extends React.Component {
   state = {
     success: false,
+    username: '',
+    password: '',
   };
+  onUpdateUsername = username => this.setState({ username });
+  onUpdatePassword = password => this.setState({ password });
   render() {
-    if (!this.state.success) {
+    const { username, password, success } = this.state;
+    if (!success) {
       return (
         <UserConsumer>
-          {({ onLogin }) => (
+          {({ login }) => (
             <LoginForm
-              onLogin={async (username, password) => {
-                await onLogin(username, password);
-                this.setState({
-                  success: true,
-                });
+              username={username}
+              password={password}
+              onUsernameChange={this.onUpdateUsername}
+              onPasswordChange={this.onUpdatePassword}
+              login={async (username, password) => {
+                try {
+                  await login(username, password);
+                  this.setState({
+                    success: true,
+                  });
+                } catch (e) {
+                  if (e.response && e.response.status === 400) {
+                    alert('아이디와 비밀번호를 확인해 주세요.');
+                  } else {
+                    alert('네트워크 에러가 발생했습니다. 잠시 뒤 실행해주세요');
+                  }
+                }
               }}
             />
           )}
         </UserConsumer>
       );
     } else {
-      return <Redirect to="/" />;
+      return <Redirect to="/login" />;
     }
   }
 }
